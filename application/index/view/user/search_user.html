@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>修改用户</title>
+	<style type="text/css">
+		body,div,h1,form{margin:0;padding:0;}
+		body{font-family: '微软雅黑';font-size:12px;}
+		#container{padding:10px;}
+		h1{text-align:center;margin-bottom: 10px;}
+		form{width:600px;margin:0 auto;}
+		form>div{height: 30px;line-height: 30px;}
+		form>div>span{display: inline-block;width:250px;text-align: right;padding-right: 3px;}
+		.inp{width:300px;}
+		.ct{text-align:center;}
+		.pm{width:300px;height:300px;}
+		.pt{height: 340px;}
+		.ptl{float:left;}
+		.ptr{float:left;}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<h1>修改用户</h1>
+		<form id="frm" name="frm" action="" method="post" enctype="multipart/form-data">
+			<div>
+				<span>用户名:</span>
+				<input type="text" id="userid" name="userid" value="{$user.userid}" readonly="readonly" class=".inp">
+			</div>
+			<div>
+				<span>用户姓名：</span>
+				<input type="text" id="xm" name="xm " value="{$user.xm}" class=".inp">
+			</div>
+			<div>
+				<span>用户类型：</span>
+				<select id="usertype" name="usertype" class=".inp">
+					<option value="1" {eq name="user.usertype" value="1"}selected{/eq}>管理员</option>
+					<option value="2"  {eq name="user.usertype" value="2"}selected{/eq}>教师</option>
+					<option value="3"  {eq name="user.usertype" value="3"}selected{/eq}>学生</option>
+				</select>
+			</div>
+			<div class="pt">
+				<span class="ptl">相片：</span>
+				<div class="ptr">
+					<input type="file" id="photo" name="photo"><br>
+					<img src="http://localhost/lab08/upload/{$user.userid}" class="pm">
+				</div>
+			</div>
+			<div class="ct">
+				<input type="submit" id="submit" name="submit" value="修改">
+			</div>
+			
+		</form>
+	</div>
+</body>
+</html>

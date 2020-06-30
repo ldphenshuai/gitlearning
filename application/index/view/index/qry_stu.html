@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>查询学生</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<style type="text/css">
+    body,div,h1,h2,p{
+        margin: 0;padding: 0;
+    }
+   #container{
+    padding: 10px;
+    text-align: center;
+   } 
+   h1{text-align: center;margin-bottom: 10px;}
+   form{
+    margin-bottom: 20px;
+   }
+   .nr{
+    text-align: center;
+    color: red;
+    margin-top: 30px;
+   }
+   td{
+    text-align:center;
+   }
+   th{
+    background-color: #346CCAFF;
+   }
+</style>
+</head>
+<body>
+    <div id="container">
+    	<div id="frmlayer">
+    		<h1>学生信息查询</h1>
+    		<form id="frm" name="frm" action="{:url('qryStu')}" method="post">
+    			<span>学号：</span>
+    			<input type="text" name="sno" id="sno" value="{$sno}">
+    			<span>姓名</span>
+    			<input type="text" name="sname" id="sname" value="{$sname}">
+    			<span>专业：</span>
+    			<select id="sltSp" name="sltSp">
+    				<option value="计算机" {if $sp=="计算机"} selected {/if}>计算机</option>
+    				<option value="通信工程" {if $sp=="通信工程"} selected {/if}>通信工程</option>
+    				<option value="英语" {if $sp=="英语"} selected {/if}>英语</option>
+    			</select>
+    			<input type="submit" name="submit" id="submit" value="查询">
+    		</form>
+    	</div>
+        <div id="resultlayer">
+            <h2>学生信息查询结果</h2>
+            {if count($ss)>0}
+                <table width="600px" border="1" cellpadding="0" cellspacing="0" align="center">
+                    <tr><th>学号</th><th>姓名</th><th>性别</th><th>出生时间</th><th>专业</th><th>总学分</th><th>操作</th></tr>
+                    {foreach $ss as $k=>$v}
+                    <tr>
+                        <td>{$v['XH']}</td>
+                        <td>{$v['XM']}</td>
+                        <td>{$v['XB']}</td>
+                        <td>{$v['CSSJ']}</td>
+                        <td>{$v['ZY']}</td>
+                        <td>{$v['ZXF']}</td>
+                        <td><a href="{:url('mdfStu',['sno'=>$v['XH']])}">修改</a></td>
+                    </tr>
+                    {/foreach}
+                </table>
+            {else/}
+                <div class="nr">没有您要查询的学生</div>
+            {/if}
+        </div>
+    </div>
+</body>
+</html>

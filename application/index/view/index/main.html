@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>后台主页</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<script type="text/javascript" src="__STATIC__/js/jquery-3.4.1.min.js"></script>
+<style type="text/css">
+	*{
+		margin: 0;padding: 0;font-family: '微软雅黑';font-size: 12px;
+	}
+	html,body{
+		height: 100%;
+	}
+	a{
+		text-decoration: none;
+	}
+	.container{
+		width: 100%;height: 100%;background-color: #f2f2f2;
+	}
+	.top{height: 96px;background: url(__STATIC__/images/bg.png) repeat-x;}
+	.top h2{
+		height: 96px;line-height: 96px;color: #fff;font-size: 36px;text-align: center;
+	}
+	.bm{overflow: hidden;height: 86%;}
+	.lf{float: left;width: 14%;background: #ddd;overflow: auto;height:100%;}
+	.rg{float: left;background: #778;width: 86%;height: 100%;}
+	.pt{text-align: center;}
+	.uu span{display: inline-block;margin-left: 15px;}
+	ul,li{list-style: none;}
+	.menu1>li>a{height: 30px;line-height: 30px;padding-left: 29px;background: url(__STATIC__/images/closed16.png) no-repeat 5px center;font-size: 14px;}
+	.menu2>li>a{height: 30px;line-height: 30px;padding-left: 57px;background: url(__STATIC__/images/file18.png) no-repeat 34px center;font-size: 14px;}
+	.menu2{display: none;}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="top"><h2>成绩管理系统</h2></div>
+		<div class="bm">
+			<div class="lf">
+				<div class="pt"><img src="__STATIC__/images/admin.png"></div>
+				<div class="uu">
+					<span>{$Think.session.username}</span>
+					<span>{$Think.session.userType}</span>
+					<span><a href="#">退出</a></span>
+				</div>
+				<div class="menu">
+					<ul class="menu1">
+						<li><a href="#" onclick="openmenu(this,'stu')">学生信息管理</a>
+							<ul class="menu2" id="stu">
+							<li><a href="{:url('addStu')}" target="main">添加学生</a></li>
+							<li><a href="{:url('qryStu')}" target="main">查询学生</a></li>
+							<li><a href="{:url('delStu')}" target="main">删除学生</a></li>
+							</ul>
+						</li>
+						<li><a href="#" onclick="openmenu(this,'course')">课程信息管理</a>
+							<ul class="menu2" id="course">
+							<li><a href="#">课程信息录入</a></li>
+							<li><a href="#">课程信息查询</a></li>
+							</ul>
+						</li>
+						<li><a href="#" onclick="openmenu(this,'grade')">成绩信息管理</a>
+							<ul class="menu2" id="grade">
+							<li><a href="{:url('inputScore')}" target="main">成绩信息录入</a></li>
+							<li><a href="{:url('queryScore')}" target="main">学生成绩查询</a></li>
+							<li><a href="#">学生成绩排序</a></li>
+							</ul>
+						</li>
+							<li><a href="#" onclick="openmenu(this,'user')">用户管理</a>
+							<ul class="menu2" id="user">
+							<li><a href="{:url('user/add')}" target="main">添加用户</a></li>
+							<li><a href="{:url('user/mdf')}" target="main">修改用户</a></li>
+							<li><a href="#">注销用户</a></li>
+							<li><a href="#">重置密码</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="rg"><iframe id="main" name="main" frameborder="0" scrolling="auto" framespacing="0" width="100%" height="100%"></iframe></div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function openmenu(obj,name){
+			$('.menu2').css('display','none');
+			$('.menu1>li>a').css('background-image','url(__STATIC__/images/closed16.png)');
+			$('#'+name).css('display','block');
+			$(obj).css('background-image','url(__STATIC__/images/opened16.png)');
+			//$(obj).css('background-image','__STATIC__/images/opened16.png');
+		}
+	</script>
+</body>
+</html>

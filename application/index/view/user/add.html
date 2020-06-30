@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+	body,div,h1,form{
+		margin: 0; padding: 0;
+		font-family: 微软雅黑;
+	}
+	#container{
+		padding: 10px;
+	}
+	h1{
+		text-align:center;margin-bottom: 12px;
+	}
+	form{width: 600px;margin: 0 auto;}
+	form>div{
+		line-height: 50px;
+	}
+	form div span{
+		display: inline-block;width: 250px;text-align:right;padding-right: 4px;
+	}
+	.inp{
+		width: 300px;
+	}
+	.ct{text-align: center;}.sp{margin-right: 30px;}
+</style>
+</head>
+<body>
+    <div id="container">
+    	<h1>添加用户</h1>
+    	<form id="frm" name="frm" action="{:url('userInput')}" method="post" enctype="multipart/form-data">
+    		<div>
+    			<span>用户名:</span>
+    			<input type="text" name="userid" id="userid" class="inp">
+    		</div>
+    		 <div>
+    			<span>密码:</span>
+    			<input type="text" name="pwd" id="pwd" class="inp" value="666666" readonly="readonly">
+    		</div>    		 
+    		<div>
+    			<span>用户姓名：</span>
+    			<input type="text" name="xm" id="xm" class="inp">
+    		</div>    		 
+    		<div>
+    			<span>用户类型：</span>
+    			<select name="usertype" id="usertype" class="inp">
+    				<option value="1">管理员</option>
+    				<option value="2">教师</option>
+    				<option value="3">学生</option>
+    			</select>
+    		</div>
+    		<div>
+    			<span>头像：</span>
+    			<input type="file" name="photo" id="photo">
+    		</div>
+    		<div class="ct">
+    			<input type="submit" name="submit" value="确定" class="sp">
+    			<input type="reset" name="reset" value="重置">
+    		</div>
+    	</form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>修改学生</title>
+	<style type="text/css">
+		body,div,h1,form{margin:0;padding:0;}
+		body{font-family: '微软雅黑';font-size: 12px;}
+		#container{padding:10px;}
+		h1{text-align: center;margin-bottom: 10px;}
+		form{width:600px;margin:0 auto;}
+		form>div{height: 30px;line-height: 30px;}
+		form>div span{display: inline-block;width:250px;text-align: right;padding-right: 3px;}
+		.inp{width:300px;}
+		.dta{height: 70px;}
+		.ta{height:60px;}
+		.ct{text-align: center;}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<h1>修改学生</h1>
+		<form id="frm" name="frm" action="{:url('mdfStuInput')}" method="post">
+			<div>
+				<span>学号：</span>
+				<input type="text" id="XH" name="XH" value="{$stu.XH}" class="inp" readonly="readonly">
+			</div>
+			<div>
+				<span>姓名：</span>
+				<input type="text" id="XM" name="XM" value="{$stu.XM}" class="inp">
+			</div>
+			<div>
+				<span>性别：</span>
+				{eq name="stu.XB" value="1"}
+				<input type="radio" id="XB1" name="XB" value="1" checked>男
+				<input type="radio" id="XB0" name="XB" value="0">女
+				{else/}
+				<input type="radio" id="XB1" name="XB" value="1">男
+				<input type="radio" id="XB0" name="XB" value="0" checked>女
+				{/eq}
+			</div>
+			<div>
+				<span>出生时间：</span>
+				<input type="date" id="CSSJ" name="CSSJ" value="{$stu.CSSJ}" class="inp">
+			</div>
+			<div>
+				<span>专业：</span>
+				<select id="ZY" name="ZY" class="inp">
+					<option value="计算机" {if $stu.ZY=='计算机'} selected {/if}>计算机</option>
+					<option value="通信工程" {if $stu.ZY=='通信工程'} selected {/if}>通信工程</option>
+					<option value="英语" {if $stu.ZY=='英语'} selected {/if}>英语</option>
+				</select>
+			</div>
+			<div>
+				<span>总学分：</span>
+				<input type="text" id="ZXF" name="ZXF" value="{$stu.ZXF}">
+			</div>			
+			<div class="dta">
+				<span>备注：</span>
+				<textarea id="BZ" name="BZ" class="inp ta">{$stu.BZ}</textarea>
+			</div>
+			<div class="ct">
+				<input type="submit" id="submit" name="submit" value="修改">
+				<input type="reset" id="reset" name="reset" value="重置">
+			</div>
+		</form>
+	</div>
+</body>
+</html>
